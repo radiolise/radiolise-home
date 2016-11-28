@@ -1,2 +1,2 @@
 # radiolise
-Radio for GNU/Linux servers (or just radiolise) is a web interface that allows you to listen to your favorite radio channels, controlled by the client device and played on a web server. The source files have to be hosted by a Linux PHP web server with Music Player Daemon installed.
+Radio for GNU/Linux servers (or just radiolise) is a web interface that allows you to listen to your favorite radio channels. You can control the radio streams using your favorite web browser. The user interface is hosted and the streams are played by your web server.
