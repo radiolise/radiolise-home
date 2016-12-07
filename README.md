@@ -5,4 +5,4 @@ Radio for GNU/Linux servers (or just radio·li·se) is a freedom respecting web 
 
 Use of the software is especially recommended on energy efficient single board computers, such as the Raspberry Pi.
 
-**There are missing parts of the source code that will be uploaded as soon as some necessary features were included.**
+**THERE ARE MISSING PARTS OF THE SOURCE CODE THAT WILL BE UPLOADED AS SOON AS SOME NECESSARY FEATURES WERE INCLUDED.**
