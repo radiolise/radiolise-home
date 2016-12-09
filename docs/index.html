@@ -37,7 +37,7 @@
             setInterval(function() {
                 var color = '#';
                 for (var i = 0; i < 6; i++ ) {
-                    color += '2345'[Math.floor(Math.random() * 4)];
+                    color += '012345'[Math.floor(Math.random() * 6)];
                 }
                 $("body").animate({
                     "background-color": color
