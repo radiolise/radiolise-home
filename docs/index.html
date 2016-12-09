@@ -12,7 +12,7 @@
 
 <body>
   <div class="p-y-3 section section-fill-height section-opaque-dark text-xs-center">
-    <div class="background-image" style="background-image : url('http://media.istockphoto.com/photos/listening-radio-picture-id488054426?k=6&m=488054426&s=170667a&w=0&h=JFXacZl9vyodq3PaZLSFjkulKdRPecvsi1J93X1g4xo=')"></div>
+    <div class="background-image"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-12 p-y-3 text-inverse text-xs-center">
@@ -29,8 +29,22 @@
 
 
 
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="http://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+  <script>
+        $(".background-image").ready(function() {          
+            setInterval(function() {
+                var color = '#';
+                for (var i = 0; i < 6; i++ ) {
+                    color += '012345'[Math.floor(Math.random() * 6)];
+                }
+                $("body").animate({
+                    "background-color": color
+                }, 1000);                
+            }, 2000);
+        });  
+  </script>
 
 
 
