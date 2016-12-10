@@ -15,15 +15,14 @@ $(document).ready(function() {
 			var vdir = data[2];
 			var file = data[3];
 			hint("Welcome to the user interface!");
-			updateFinish("Almost done...: <p/><div style='text-align: justify'>Congratulations! It seems like " + appname + " has been set up successfully (almost). However, we need both read and write access to the file \"" + file + "\" to save new channels. To fix the problem, you should change the owner of that file by typing<p/><code>chown " + user + " " + vdir + "/" + file + "</code><p/>into a terminal with root privileges.</div>");
-			$("#maincontrols").finish().slideUp();
+			updateFinish("We’re almost ready!: <p/><div style='text-align: justify'>Congratulations! It seems like " + appname + " has been set up successfully (almost). However, we need both read and write access to the file \"" + file + "\" to save new channels. To fix the problem, you should tell the server to change the owner of that file by typing<p/><code>chown " + user + " " + vdir + "/" + file + "</code><p/>into a terminal with root privileges.<br><br><div style='color: red; padding: 10px; border-radius: 10px; box-shadow: 2px 2px 7px red'><i class='fa fa-fw fa-exclamation-triangle'/> On top of that, there is an unsolved issue that’s currently preventing you from playing previously saved channels. This isn’t your fault and I’m already trying to fix that as it’s a significant limitation. If you already found a solution, you can send me a pull request on GitHub. Press <span style='border-style: solid; border-radius: 5px'>&nbsp;I&nbsp;&nbsp;</span>&nbsp;to learn more.</div></div>");
+			$("#maincontrols").hide();
 		}
 		else {
 			updateStart();
 		}
 	});
 	$("#newname, #newurl").val(null);
-    $("#aboutname").html("radio<span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span> (meaning “<u>Radio</u> for GNU/<span style='color: #ffec80'><u>Li</u></span>nux <span style='color: #80f6ff'><u>se</u></span>rvers”)");
     $("#aboutversion").text(appversion);
     $(".navbar-brand").attr({
         "src": "radiolise.png",
@@ -433,7 +432,7 @@ function updateStart() {
 				timedout = setTimeout(function() {
 					if (prevdata != timeoverflow) {
 						updateFinish(timeoverflow);
-						$("#maincontrols").finish().slideDown();
+						$("#maincontrols").finish().slideUp();
 					}
 				}, 10000);
 			}, 5000);
