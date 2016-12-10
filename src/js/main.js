@@ -16,7 +16,7 @@ $(document).ready(function() {
 			var file = data[3];
 			hint("Welcome to the user interface!");
 			updateFinish("Almost done...: <p/><div style='text-align: justify'>Congratulations! It seems like " + appname + " has been set up successfully (almost). However, we need both read and write access to the file \"" + file + "\" to save new channels. To fix the problem, you should change the owner of that file by typing<p/><code>chown " + user + " " + vdir + "/" + file + "</code><p/>into a terminal with root privileges.</div>");
-			$("#maincontrols").hide();
+			$("#maincontrols").finish().slideUp();
 		}
 		else {
 			updateStart();
@@ -181,7 +181,7 @@ var appname = "radio·li·se";
 var noconnection = "Disconnected from server: Please check your network connection. This message will disappear as soon as the problem doesn’t exist anymore.";
 var timeoverflow = "Connection timed out: It takes too long to get a response from the server. This message will disappear as soon as the problem doesn’t exist anymore.";
 var visible = false;
-var appversion = "16.11.0";
+var appversion = "16.12.0";
 var nostream = "Radio off";
 var playlist = [];
 var names = [];
@@ -433,15 +433,23 @@ function updateStart() {
 				timedout = setTimeout(function() {
 					if (prevdata != timeoverflow) {
 						updateFinish(timeoverflow);
-						$("#maincontrols").finish().slideUp();
+						$("#maincontrols").finish().slideDown();
 					}
 				}, 10000);
 			}, 5000);
 		}
 		$.post("post.php", {
 			cmd: 0
-		}, function(data) {
-			if (data.charAt(0) == '0') {
+		}).done(function(data) {
+			if (prevdata == noconnection) {
+				$("#maincontrols").finish().slideDown();
+				hint("Successfully reconnected to the server.");
+			}
+			else if (prevdata == timeoverflow) {
+				$("#maincontrols").finish().slideDown();
+				hint("The server finally responded.");
+			}
+            if (data.charAt(0) == '0') {
 				$("#stop").hide("swing");
 			}
 			else {
@@ -457,15 +465,6 @@ function updateStart() {
 					updateFinish(data);
 					toggle(true);
 				}
-			}
-		}).done(function() {
-			if (prevdata == noconnection) {
-				$("#maincontrols").finish().slideDown();
-				hint("Successfully reconnected to the server.");
-			}
-			else if (prevdata == timeoverflow) {
-				$("#maincontrols").finish().slideDown();
-				hint("The server finally responded.");
 			}
 		}).fail(function() {
 			if (prevdata != noconnection) {
