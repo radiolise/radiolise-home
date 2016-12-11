@@ -4,6 +4,7 @@
 	$requireFeedback = false;
 	$output;
 	$file = "channels.list";
+	$channels = file_get_contents($file);
 	switch ($_POST['cmd']) {
 		case 0:	//Gets channel information
 			if (exec('mpc playlist') == '') {
@@ -34,10 +35,15 @@
 			$command = 'mpc clear && mpc add ' . $argument . ' && mpc play 1';
 			break;
 		case 5: //Adds a channel
-			file_put_contents($file, $argument . ';', FILE_APPEND);
+            if (strpos($channels, ';') == false) {
+                file_put_contents($file, $argument . ';');
+            }
+            else {
+                file_put_contents($file, $argument . ';', FILE_APPEND);
+			}
 			break;
 		case 6: //Gets all channels
-			echo file_get_contents($file);
+			echo $channels;
 			break;
 		case 7: //Remove a channel
 			file_put_contents($file, str_replace($argument . ';', '', file_get_contents($file)));
