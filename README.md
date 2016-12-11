@@ -7,4 +7,5 @@ Use of the software is especially recommended on energy efficient single board c
 
 ## Changelog
 ### Version 16.12.0
-> radio·li·se was released!<br>Please report bugs to the issues tab.
+* radio·li·se was released!
+* Please report bugs to the issues tab.
