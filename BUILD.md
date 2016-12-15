@@ -18,4 +18,4 @@ radio·li·se needs read and write access to the file 'channels.list' to save ne
 
 ## DONE
 
-Enjoy using radio·li·se! If anything doesn't work the way you expected, please use the issues tab in this repository. The community will try to help you out.
+Now we're ready to take off! If anything doesn't work the way you expected, please use the issues tab in this repository. The community will try to help you out.
