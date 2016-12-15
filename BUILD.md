@@ -10,11 +10,11 @@ In order to work, radio·li·se needs some third party packages to be installed.
 
 ## Step 2: Copy files
 
-Copy the files in the src folder of the master branch to the virtual directory of your web server
+Copy the files in the src folder of the master branch to the virtual directory of your web server.
 
 ## Step 3: Grant privileges
 
-radio·li·se needs read and write access to the file 'channels.list' to save new channels. Do to so, you have to change the owner of that file. If you don't know how to do this: Don't worry, if you call the web interface via your web browser, radio·li·se will tell you how to grant those privileges.
+radio·li·se needs read and write access to the file 'channels.list' to save new channels. To do so, you have to change the owner of that file. If you don't know how to do this: Don't worry, if you call the web interface via your web browser, radio·li·se will tell you how to grant those privileges.
 
 ## DONE
 
