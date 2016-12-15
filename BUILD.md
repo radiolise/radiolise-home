@@ -10,7 +10,7 @@ In order to work, radio·li·se needs some third party packages to be installed.
 
 ## Step 2: Copy files
 
-Copy the files in the src folder to the virtual directory of your web server
+Copy the files in the src folder of the master branch to the virtual directory of your web server
 
 ## Step 3: Grant privileges
 
