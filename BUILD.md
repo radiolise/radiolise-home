@@ -1,14 +1,10 @@
 # radio·li·se build instructions
 <img src="radiolise.png" height=100em>
 
-Radio for GNU/Linux servers (or just radio·li·se) is a freedom respecting web interface that allows you to listen to your favorite radio channels. You can easily access the user interface via your favorite web browser. The streams are received and played by your private GNU/Linux PHP web server.
+## Step 1: Install necessary packages
 
-Use of the software is especially recommended on energy efficient single board computers, such as the Raspberry Pi.
+In order to work, radio·li·se needs some third party packages to be installed. Here is a list of packages you have to install if you want to use radio·li·se:
 
-## Changelog
-### Version 16.12.0 (this version)
-* radio·li·se was released!
-
----
-
-***[BUILD INSTRUCTIONS](build.md)***
+1. Install a web server with PHP support. I recommend using Apache in combination with the PHP mod
+2. Install Music Player Daemon
+3. Copy the files of the master repository in the src folder to the virtual directory of your web server
