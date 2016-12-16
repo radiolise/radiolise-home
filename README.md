@@ -11,4 +11,4 @@ Use of the software is especially recommended on energy efficient single board c
 
 ---
 
-<h4>[SETUP INSTRUCTIONS](BUILD.md)</h4>
+[<h1>SETUP INSTRUCTIONS</h1>](BUILD.md)
