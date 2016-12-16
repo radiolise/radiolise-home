@@ -1,15 +1,15 @@
 # radio·li·se setup instruction
 
-## 1. Install necessary packages
+## 1. Get necessary packages
 
 In order to work, radio·li·se needs some third party packages to be installed. Here is a list of packages you'll have to install if you want to use radio·li·se:
 
 * Set up a web server with PHP support; I recommend using Apache in combination with the corresponding PHP package
 * Set up Music Player Daemon
 
-## 2. Copy files
+## 2. Copy source files
 
-Copy the files in the src folder of the master branch to the virtual directory of your web server.
+Copy the files in the 'src' folder of the master branch to the virtual directory of your web server.
 
 ## 3. Grant privileges
 
