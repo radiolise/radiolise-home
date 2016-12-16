@@ -1,4 +1,4 @@
-# radio·li·se build instructions
+# radio·li·se setup instructions
 <img src="radiolise.png" height=100em>
 
 ## Step 1: Install necessary packages
