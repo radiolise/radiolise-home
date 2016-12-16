@@ -4,7 +4,7 @@
 
 In order to work, radio·li·se needs some third party packages to be installed. Here is a list of packages you'll have to install if you want to use radio·li·se:
 
-* Set up a web server with PHP support; I recommend using Apache in combination with the corresponding PHP package
+* Set up a web server software with PHP support; I recommend using Apache in combination with the corresponding PHP package
 * Set up Music Player Daemon
 
 ## 2. Copy source files
@@ -17,4 +17,4 @@ radio·li·se needs read and write access to the file 'channels.list' to save ne
 
 ## DONE
 
-Now we're ready to take off! If anything doesn't work the way you expected, please use the issues tab in this repository. The community will try to help you out.
+Now we're ready to take off! If something doesn't work the way you expected, you may always use the issues tab in this repository. The community will try to help you out.
