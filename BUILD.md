@@ -1,4 +1,4 @@
-# radio·li·se setup instructions
+# radio·li·se setup instruction
 
 ## 1. Install necessary packages
 
