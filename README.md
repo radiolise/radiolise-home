@@ -11,4 +11,4 @@ Use of the software is especially recommended on energy efficient single board c
 
 ---
 
-If you want to know more about setting up radio·li·se, read [**setup instructions**](BUILD.md).
+If you want to know how to set up radio·li·se, read [**setup instructions**](BUILD.md).
