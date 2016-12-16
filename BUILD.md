@@ -2,10 +2,10 @@
 
 ## 1. Get necessary packages
 
-In order to work, radio·li·se needs some third party packages to be installed. Here is a list of packages you'll have to install if you want to use radio·li·se:
+In order to work, radio·li·se needs some third party packages to be installed. If you want to use radio·li·se, You'll have to install:
 
-* Set up a web server software with PHP support; I recommend using Apache in combination with the corresponding PHP package
-* Set up Music Player Daemon
+* any web server software with PHP support; I recommend using Apache in combination with the corresponding PHP package
+* Music Player Daemon
 
 ## 2. Copy source files
 
