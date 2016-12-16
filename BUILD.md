@@ -1,17 +1,17 @@
 # radio·li·se setup instructions
 
-1. ## Install necessary packages
+## 1. Install necessary packages
 
 In order to work, radio·li·se needs some third party packages to be installed. Here is a list of packages you'll have to install if you want to use radio·li·se:
 
 * Set up a web server with PHP support; I recommend using Apache in combination with the corresponding PHP package
 * Set up Music Player Daemon
 
-1. ## Step 2: Copy files
+## 2. Copy files
 
 Copy the files in the src folder of the master branch to the virtual directory of your web server.
 
-1. ## Step 3: Grant privileges
+## 3. Grant privileges
 
 radio·li·se needs read and write access to the file 'channels.list' to save new channels. To do so, you have to change the owner of that file. If you don't know how to do this: Don't worry, if you call the web interface via your web browser, radio·li·se will tell you how to grant those privileges.
 
