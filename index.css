@@ -3160,7 +3160,6 @@ html {
 
 body {
   margin: 0;
-  background-color: #000000;
 }
 
 article,
@@ -4829,6 +4828,7 @@ a.text-danger:hover {
   align-items: center; }
 
 .section .background-image {
+  background-color: #000000;
   z-index: -1;
   position: absolute;
   top: 0px;
