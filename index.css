@@ -3159,7 +3159,9 @@ html {
   -webkit-text-size-adjust: 100%; }
 
 body {
-  margin: 0; }
+  margin: 0;
+  background-color: #000000;
+}
 
 article,
 aside,
