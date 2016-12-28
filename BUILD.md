@@ -4,8 +4,8 @@
 
 In order to work, radio·li·se needs some third party packages. If you want to use radio·li·se, you'll have to install:
 
-* any web server software with PHP support; Apache in combination with the corresponding PHP package is recommended
-* Music Player Daemon
+* any web server software with PHP support; [Apache](https://github.com/apache/httpd) in combination with the corresponding PHP package is recommended
+* [Music Player Daemon](https://github.com/MaxKellermann/MPD)
 
 ## 2. Copy source files
 
