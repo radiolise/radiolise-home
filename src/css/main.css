@@ -1,11 +1,7 @@
-@import url("font-awesome.min.css");
+@import url("font-awesome.css");
 @font-face {
     font-family: 'LatoWeb';
-    src: url('../fonts/Lato-Regular.eot');
-    src: url('../fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Lato-Regular.woff2') format('woff2'),
-         url('../fonts/Lato-Regular.woff') format('woff'),
-         url('../fonts/Lato-Regular.ttf') format('truetype');
+    src: url('../fonts/Lato-Regular.woff2') format('woff2');
     font-style: normal;
     font-weight: normal;
     text-rendering: optimizeLegibility;
@@ -1095,7 +1091,6 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: #430a26;
 }
 input,
 button,
@@ -1106,8 +1101,8 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #85144b;
-  text-decoration: none;
+  color: #ffffff;
+  text-decoration: none !important;
 }
 a:hover,
 a:focus {
@@ -1347,7 +1342,7 @@ mark,
   color: #777777;
 }
 .text-primary {
-  color: #85144b;
+  color: #ffffff;
 }
 a.text-primary:hover {
   color: #590d32;
@@ -1362,7 +1357,7 @@ a.text-success:hover {
   color: #b11b64;
 }
 a.text-info:hover {
-  color: #85144b;
+  color: #ffffff;
 }
 .text-warning {
   color: #f0ad4e;
@@ -1378,7 +1373,7 @@ a.text-danger:hover {
 }
 .bg-primary {
   color: #fff;
-  background-color: #85144b;
+  background-color: #ffffff;
 }
 a.bg-primary:hover {
   background-color: #590d32;
@@ -3090,7 +3085,7 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #ffffff;
-  background-color: #85144b;
+  background-color: #ffffff;
   border-color: #6f113f;
 }
 .btn-primary:hover,
@@ -3126,11 +3121,11 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #85144b;
+  background-color: #ffffff;
   border-color: #6f113f;
 }
 .btn-primary .badge {
-  color: #85144b;
+  color: #ffffff;
   background-color: #ffffff;
 }
 .btn-success {
@@ -3190,7 +3185,7 @@ fieldset[disabled] .btn-success.active {
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
   color: #ffffff;
-  background-color: #85144b;
+  background-color: #ffffff;
   border-color: #661039;
 }
 .btn-info:active,
@@ -3314,7 +3309,7 @@ fieldset[disabled] .btn-danger.active {
   background-color: #ffffff;
 }
 .btn-link {
-  color: #85144b;
+  color: #ffffff;
   font-weight: bold;
   border-radius: 0;
 }
@@ -3336,7 +3331,7 @@ fieldset[disabled] .btn-link {
 .btn-link:hover,
 .btn-link:focus {
   color: #430a26;
-  text-decoration: underline;
+  text-decoration: underline !important;
   background-color: transparent;
 }
 .btn-link[disabled]:hover,
@@ -3480,7 +3475,7 @@ tbody.collapse.in {
   color: #ffffff;
   text-decoration: none;
   outline: 0;
-  background-color: #85144b;
+  background-color: #ffffff;
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -3906,7 +3901,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eeeeee;
-  border-color: #85144b;
+  border-color: #ffffff;
 }
 .nav .nav-divider {
   height: 1px;
@@ -3999,7 +3994,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #ffffff;
-  background-color: #85144b;
+  background-color: #ffffff;
 }
 .nav-stacked > li {
   float: none;
@@ -4622,7 +4617,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 12px;
   line-height: 1.42857143;
   text-decoration: none;
-  color: #85144b;
+  color: #ffffff;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   margin-left: -1px;
@@ -4654,8 +4649,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .active > span:focus {
   z-index: 2;
   color: #ffffff;
-  background-color: #85144b;
-  border-color: #85144b;
+  background-color: #ffffff;
+  border-color: #ffffff;
   cursor: default;
 }
 .pagination > .disabled > span,
@@ -4741,13 +4736,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   display: inline;
   padding: .2em .6em .3em;
   font-size: 75%;
-  font-weight: bold;
   line-height: 1;
   color: #ffffff;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
+  background-color: #333333;
 }
 a.label:hover,
 a.label:focus {
@@ -4770,7 +4765,7 @@ a.label:focus {
   background-color: #5e5e5e;
 }
 .label-primary {
-  background-color: #85144b;
+  background-color: #ffffff;
 }
 .label-primary[href]:hover,
 .label-primary[href]:focus {
@@ -4788,7 +4783,7 @@ a.label:focus {
 }
 .label-info[href]:hover,
 .label-info[href]:focus {
-  background-color: #85144b;
+  background-color: #ffffff;
 }
 .label-warning {
   background-color: #f0ad4e;
@@ -4838,7 +4833,7 @@ a.badge:focus {
 }
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: #85144b;
+  color: #ffffff;
   background-color: #ffffff;
 }
 .list-group-item > .badge {
@@ -4908,7 +4903,7 @@ a.badge:focus {
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: #85144b;
+  border-color: #ffffff;
 }
 .thumbnail .caption {
   padding: 9px;
@@ -4965,7 +4960,7 @@ a.thumbnail.active {
   border-top-color: #d42096;
 }
 .alert-info .alert-link {
-  color: #85144b;
+  color: #ffffff;
 }
 .alert-warning {
   background-color: #f8d9ac;
@@ -5022,7 +5017,7 @@ a.thumbnail.active {
   line-height: 20px;
   color: #ffffff;
   text-align: center;
-  background-color: #85144b;
+  background-color: #ffffff;
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   -webkit-transition: width 0.6s ease;
@@ -5174,8 +5169,8 @@ a.list-group-item:focus {
 .list-group-item.active:focus {
   z-index: 2;
   color: #ffffff;
-  background-color: #85144b;
-  border-color: #85144b;
+  background-color: #ffffff;
+  border-color: #ffffff;
 }
 .list-group-item.active .list-group-item-heading,
 .list-group-item.active:hover .list-group-item-heading,
@@ -5539,22 +5534,22 @@ a.list-group-item-danger.active:focus {
   border-bottom-color: #dddddd;
 }
 .panel-primary {
-  border-color: #85144b;
+  border-color: #ffffff;
 }
 .panel-primary > .panel-heading {
   color: #ffffff;
-  background-color: #85144b;
-  border-color: #85144b;
+  background-color: #ffffff;
+  border-color: #ffffff;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #85144b;
+  border-top-color: #ffffff;
 }
 .panel-primary > .panel-heading .badge {
-  color: #85144b;
+  color: #ffffff;
   background-color: #ffffff;
 }
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #85144b;
+  border-bottom-color: #ffffff;
 }
 .panel-success {
   border-color: #9ccf91;
@@ -5747,7 +5742,7 @@ button.close {
   border-radius: 5px;
   background-clip: padding-box;
   outline: 0;
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);*/
 }
 .modal-backdrop {
   position: fixed;
@@ -5756,7 +5751,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000000;
+  /*background-color: #ffffff;*/
 }
 .modal-backdrop.fade {
   opacity: 0;
@@ -6578,7 +6573,7 @@ TODO: verify if we can touch only section
   margin-bottom: 0px !important;
 }
 .jumbotron h1.text-primary {
-  color: #85144b !important;
+  color: #ffffff !important;
 }
 .jumbotron h1.text-inverse {
   color: #ffffff !important;
@@ -6615,7 +6610,7 @@ TODO: verify if we can touch only section
   background-attachment: fixed;
 }
 .section-primary {
-  background-color: #85144b !important;
+  background-color: #ffffff;
   color: #ffffff;
 }
 .section-primary .background-image {
@@ -6701,7 +6696,7 @@ TODO: verify if we can touch only section
   }
 }
 .cover h1.text-primary {
-  color: #85144b !important;
+  color: #ffffff !important;
 }
 .cover h1.text-inverse {
   color: #ffffff !important;
@@ -6780,9 +6775,6 @@ TODO: verify if we can touch only section
 	z-index: 1050;
 	pointer-events: none;
 }
-.sh-content {
-	background-color: #222;
-}
 #alerttext {
 	color: #ffffff;
 }
@@ -6802,4 +6794,7 @@ TODO: verify if we can touch only section
 	position: relative;
 	vertical-align: middle;
 	pointer-events: auto;
+}
+.white {
+    color: #ffffff !important;
 }

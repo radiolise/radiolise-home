@@ -11,6 +11,9 @@
 	<noscript><meta http-equiv="refresh" content="0; URL=enablejs.html"></noscript>
   </head>
   <body>
+    <div id="loading" style="position: fixed; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 9999; width: 100%; height: 100%"><span style="position: fixed; top: calc(50% - 2.5em); left: calc(50% - 2.5em); margin: 0 auto; color: #ffffff"><i class="fa fa-fw fa-5x fa-refresh fa-spin"></i></span></div>
+    <div style="background-color: #000000; opacity: 0.5; left: 0; top: 0; width: 100%; height: 100%; position: fixed"></div>
+    <div id="brush" style="box-shadow: 0 0 10px black; background-color: #ffffff; position: fixed; right: 0px; bottom: 0px; width: 50px; height: 50px; border-top-left-radius: 70px; cursor: pointer; z-index: 1"><i class="fa fa-fw fa-paint-brush" style="font-size: 20px; margin: 20px"></i></div>
 	<div class="navbar navbar-default navbar-inverse navbar-fixed-top" id="realbar">
 	  <div class="container">
 		<div class="navbar-header">
@@ -37,32 +40,30 @@
 			<div class="row">
 			  <div class="col-md-12">
 				<div class="jumbotron text-center">
-					  <div id="channel" class="text-primary" style="display: none; font-size: 18pt; font-weight: bold">Der tolle Sender</div>
+					  <div id="channel" class="text-primary" style="display: none; font-size: 18pt; font-weight: bold"></div>
 					  <div id="info" class="text-primary" style="display: none; font-size: 16pt"></div>
 					  <br>
 					<div id="maincontrols">
 					  <div>
-						<a id="minus" class="btn btn-link"><i class="fa fa-2x fa-fw fa-minus"></i></a>
-						<a id="stop" class="btn btn-link"><i class="fa fa-2x fa-fw fa-toggle-off"></i></a>
-						<a id="plus" class="btn btn-link"><i class="fa fa-2x fa-fw fa-plus"></i></a>
+						<a id="minus" class="btn btn-link"><i class="fa fa-fw fa-2x fa-minus"></i></a>
+						<a id="stop" class="btn btn-link"><i class="fa fa-fw fa-2x fa-toggle-off"></i></a>
+						<a id="plus" class="btn btn-link"><i class="fa fa-fw fa-2x fa-plus"></i></a>
 					  </div>
 					  <div class="container">
 						<br>
 						<div class="row">
 							<div class="col-md-12">
-								<div id="channellist" style="overflow-x: auto">
-									<table class="table table-condensed text-left" style="margin: 0">
-										<tbody id="channels"></tbody>
-									</table>
-								</div>
-								<h4 id="zero" class='text-muted'>Your channels will appear here</h4>
+                                <div class="text-left" style="padding: 15px" id="channellist">
+                                    <table></table>
+                                </div>
+								<h4 id="zero" class='text-muted'>Your stations will appear here if you add one.</h4>
 							</div>
 						</div>
 						<div id="addarea">
 						<br>
 						<div class="row">
 						  <div class="col-md-12 text-right">
-							<a id="addbutton" class="btn btn-link btn-lg" data-toggle="modal" data-target="#addchannel"><i class="fa fa-fw fa-plus"></i>New channel</a>
+							<a id="addbutton" class="btn btn-link btn-lg" data-toggle="modal" data-target="#addchannel"><i class="fa fa-fw fa-plus"></i>New station</a>
 						  </div>
 						</div>
 						</div>
@@ -75,52 +76,52 @@
 		</div>
 		<div class="modal fade" id="learnmore">
 		  <div class="modal-dialog">
-			<div class="modal-content" style="background-color: #222">
+			<div class="modal-content" style="background-color: #222222">
 			  <div class="modal-body text-center">
                 <br><img src="radiolise.png" style="width: 200px"><br><br>
                 <hr style="border-color: #333">
-				<h4 style="color: white">
+				<h4 class="white">
                     <br>
                     <b><u>Radio</u> for GNU/<span style='color: #ffec80'><u>Li</u></span>nux <span style='color: #80f6ff'><u>se</u></span>rvers</b><br><br>
-                    Version <span id="aboutversion"></span><br><br>
-                    Copyright © 2016 celsiuswr<br><br><br>
-                    <a style="color: white; text-decoration: underline" href="https://github.com/celsiuswr/radiolise" target="_blank">Visit GitHub repository</a> <i class="fa fa-fw fa-external-link"></i><br><br>
-                    <a style="color: white; text-decoration: underline" href="https://raw.githubusercontent.com/celsiuswr/radiolise/master/LICENSE" target="_blank">View license</a> <i class="fa fa-fw fa-external-link"></i><br><br>
-                    <a style="color: white; text-decoration: underline" href="https://github.com/celsiuswr/radiolise/issues/new" target="_blank">Report an issue</a> <i class="fa fa-fw fa-external-link"></i><br><br>
+                    Version <span id="aboutversion"></span><br><br><br>
+                    <div style="text-align: justify">Copyright © 2016-2017 celsiuswr<br><br>
+                    radio<span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span> is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br><br>
+                    radio<span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span> is distributed in the hope that it will be useful, but <span style="color: #ff0000">without any warranty</span>; without even the implied warranty of <span style="color: #ff0000">merchantability</span> or <span style="color: #ff0000">fitness for a particular purpose</span>. See the GNU Affero General Public License for more details.<br><br>
+                    You should have received a copy of the GNU Affero General Public License along with radio<span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span>. If not, see <a href="http://www.gnu.org/licenses/" target="_blank" class="btn-link white">http://www.gnu.org/licenses/<i class="fa fa-fw fa-external-link"></i></a>.<br><br></div>
+                    <a class="btn btn-link btn-lg white" href="https://github.com/celsiuswr/radiolise" target="_blank"><i class="fa fa-fw fa-code"></i>View source<i class="fa fa-fw fa-external-link"></i></a>
+                    <a class="btn btn-link btn-lg white" href="https://github.com/celsiuswr/radiolise/issues/new" target="_blank"><i class="fa fa-fw fa-bug"></i>Report an issue<i class="fa fa-fw fa-external-link"></i></a><br>
 				</h4>
-				<h4 style="color: white">
-                    <br>
-                    <i class="fa fa-fw fa-puzzle-piece"></i><b>Components</b>
-                    <br><br>
-                    <a style="color: white; text-decoration: underline" href="https://github.com/jquery/jquery" target="_blank">jQuery</a> <i class="fa fa-fw fa-external-link"></i>
-                    <br><br>
-                    <a style="color: white; text-decoration: underline" href="https://github.com/jquery/jquery-mobile" target="_blank">jQuery Mobile</a> <i class="fa fa-fw fa-external-link"></i>
-                    <br><br>
-                    <a style="color: white; text-decoration: underline" href="https://github.com/twbs/bootstrap" target="_blank">Bootstrap</a> <i class="fa fa-fw fa-external-link"></i>
-                    <br><br>
-                    <a style="color: white; text-decoration: underline" href="https://github.com/FortAwesome/Font-Awesome" target="_blank">Font Awesome</a> <i class="fa fa-fw fa-external-link"></i>
-                    <br><br>
-				</h4>
+				<div class="text-right">
+                    <a class="btn btn-link btn-lg white" data-dismiss="modal"><i class="fa fa-fw fa-check"></i>Done</a>
+				</div>
 			  </div>
 			</div>
 		  </div>
 		</div>
 		<div class="modal fade text-center" id="addchannel" role="dialog">
 		  <div class="modal-dialog">
-			<div class="modal-content">
-			  <div class="modal-body">
-				<h4 class="text-primary" style="padding-bottom: 10px"><i class="fa fa-fw fa-plus"></i><b>New channel</b></h4>
-				<h4 class="text-primary">Please specify a URL for the desired MP3 stream.</h4><br>
-				<form role="form">
-				  <div class="form-group">
-					<!-- <input class="form-control" style="margin-bottom: 5px; box-shadow: 0 0 1px 1px #999999; background-color: white; border-style: none; font-size: 18px; color: #85144b" id="newname" placeholder="&lt;name&gt;" type="text"> -->
-					<input class="form-control" style="box-shadow: 0 0 1px 1px #999999; background-color: rgba(255, 255, 255, 0); border-style: none; font-size: 18px; color: #85144b" id="newurl" placeholder="Paste URL here" type="url">
-				  </div>
-				</form>
-				<div class="text-right">
-					<a class="btn btn-link btn-lg" data-dismiss="modal"><i class="fa fa-fw fa-close"></i>Cancel</a>
-					<a id="chadd" class="btn btn-link btn-lg" data-dismiss="modal"><i class="fa fa-fw fa-check"></i>Save</a>
+			<div class="modal-content" style="background-color: #222222">
+			  <div class="modal-body white">
+				<h4 style="padding-bottom: 10px; color: #ffffff"><i class="fa fa-fw fa-plus"></i><b>New station</b></h4>
+				<h4 style="color: #ffffff">Please enter the name of the radio station you’d like to add.</h4><br>
+                <form role="form">
+                <div class="form-group">
+                    <div class="input-group" style="box-shadow: 0 0 1px 1px #999999; border-radius: 4px">
+                        <input class="form-control" style="background-color: #333333; border-style: none; font-size: 18px; color: #ffffff" id="newurl" placeholder="Station by name" type="text">
+                        <span style="border-style: none" class="input-group-btn">
+                            <a class="btn white disabled" id="findchannel" onclick="if ($('input').val() != '') { findChannel($('input').val()) }" style="height: 34px" type="submit"><i class="fa fa-fw fa-search" style="font-size: 18px"></i>Search</a>
+                        </span>
+                    </div>
+                </div>
+                </form>
+            <div style="overflow-y: auto">
+			<div class="text-left" style="display: none; max-height: 500px; padding: 15px" id="results">
+            </div>
+            </div>
+                <div class="text-right">
+                    <a class="btn btn-link btn-lg white" data-dismiss="modal"><i class="fa fa-fw fa-close"></i>Cancel</a>
 				</div>
+				<div style="float: left"><br><i class="fa fa-fw fa-gear"></i>This feature uses the freedom-respecting <a class="btn-link white" href="http://www.radio-browser.info" target="_blank">‘Community Radio Browser’<i class="fa fa-fw fa-external-link"></i></a> web service.</div>
 			  </div>
 			</div>
 		  </div>
@@ -129,7 +130,7 @@
 		  <div id="alert-sm" class="modal-dialog modal-sm">
 			<div class="modal-content sh-content">
 			  <div class="modal-body">
-				<h4 id="alerttext"></h4>
+				<h4 id="alerttext" style="font-weight: bold" class="text-primary"></h4>
 			  </div>
 			</div>
 		  </div>
@@ -139,11 +140,11 @@
 			<div class="modal-content sh-content" style="border-top-left-radius: 0px; border-top-right-radius: 0px">
 			  <div class="modal-body">
 				<h4>
-					<i style="color: white" class='fa fa-volume-up fa-fw'></i>
+					<i class='fa fa-volume-up fa-fw text-primary'></i>
 					<div id='volumebar'>
-						<div style='border-radius: 2px; background-color: rgba(255, 255, 255, 0.1); width: 200px; height: 4px; margin-top: 8px'></div>
-						<div id="volumeline" style='border-radius: 2px; height: 4px; margin-top: -4px; background-color: white'></div>
-						<div id="volumecircle" style="width: 10px; height: 10px; border-radius: 5px; margin-top: -7px; background-color: white"></div>
+						<div style='border-radius: 2px; background-color: #cccccc; width: 200px; height: 4px; margin-top: 8px'></div>
+						<div id="volumeline" class="section-primary" style='border-radius: 2px; height: 4px; margin-top: -4px'></div>
+						<div id="volumecircle" class="section-primary" style="width: 10px; height: 10px; border-radius: 5px; margin-top: -7px"></div>
 					</div>
 				</h4>
 			  </div>
@@ -152,13 +153,13 @@
 		</div>
 		<div class="fade modal text-center" id="channeloptions">
 		  <div class="modal-dialog modal-sm">
-			<div class="modal-content">
+			<div class="modal-content" style="background-color: #222222">
 			  <div class="modal-body">
-				<h4 class="text-primary" style="padding-bottom: 10px"><i class="fa fa-fw fa-trash"></i><b>Remove “<span id='todelete'></span>”</b></h4>
-				<h4 class="text-primary">This action cannot be undone!</h4>
+				<h4 style="padding-bottom: 10px; color: #ffffff"><i class="fa fa-fw fa-trash"></i><b>Remove “<span id='todelete'></span>”</b></h4>
+				<h4 style="color: #ffffff">This action can’t be undone!</h4>
 				<div class="text-right">
-					<a class="btn btn-link btn-lg" data-dismiss="modal"><i class="fa fa-fw fa-close"></i>Cancel</a>
-					<a id="chremove" class="btn btn-link btn-lg" data-dismiss="modal"><i class="fa fa-fw fa-check"></i>Remove</a>
+					<a class="btn btn-link btn-lg white" data-dismiss="modal"><i class="fa fa-fw fa-close"></i>Cancel</a>
+					<a id="chremove" class="btn btn-link btn-lg white" data-dismiss="modal"><i class="fa fa-fw fa-check"></i>Remove</a>
 				</div>
 			  </div>
 			</div>
@@ -166,6 +167,7 @@
 		</div>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/mobile.js"></script>
+    <script type="text/javascript" src="js/color.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </body></html>

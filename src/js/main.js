@@ -7,7 +7,7 @@ $(document).ready(function() {
 		});
 	}
 	$.post("post.php", {
-		cmd: 8,
+		cmd: 7,
 	}, function(data) {
 		data = data.split(";");
 		if (data[0] == "false") {
@@ -16,11 +16,12 @@ $(document).ready(function() {
 			var file = data[3];
 			hint("Welcome to the user interface!");
             var command = "chown " + user + " " + vdir + "/" + file
-			updateFinish("We’re almost ready!: <p/><div style='text-align: justify'>Congratulations! It seems like <span style='text-shadow: -1px 0 1px #222222, 0 1px 1px #222222, 1px 0 1px #222222, 0 -1px 1px #222222;'><span style='color: #ffffff'>radio</span><span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span></span> has been set up successfully (almost). However, we need both read and write access to the file \"" + file + "\" to save new channels. To fix the problem, you should tell the server to change the owner of that file by typing<p/><div class='text-left' style='background-color: #f9f2f4; white-space: nowrap; overflow-x: auto;'><code>" + command + "</code></div><p/>into a terminal with root privileges.</div>");
+			updateFinish("We’re almost ready!: <p/><div style='text-align: justify'>Congratulations! It seems like <span style='text-shadow: -1px 0 1px #222222, 0 1px 1px #222222, 1px 0 1px #222222, 0 -1px 1px #222222;'><span style='color: #ffffff'>radio</span><span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span></span> has been set up successfully (almost). However, we need both read and write access to the file \"" + file + "\" to save new stations. To fix the problem, you should tell the server to change the owner of that file by typing<p/><div class='text-left' style='background-color: #f9f2f4; white-space: nowrap; overflow-x: auto;'><code>" + command + "</code></div><p/>into a terminal with root privileges.</div>");
 			$("#maincontrols").hide();
 		}
 		else {
 			updateStart();
+            sync();
 		}
 	});
 	$("#newname, #newurl").val(null);
@@ -49,27 +50,31 @@ $(document).ready(function() {
                 hint("<b>Invalid hashtag</b><br><br> \"" + hash +
                     "\" is unknown.");
         }
-		var lite = "/";
-		if (location.search == "?lite") {
-			lite = "/?lite";	
-		}
-		history.replaceState({}, document.title, lite);
+		history.replaceState({}, document.title, "/");
     }
     $("#chadd").on("click", addChannel);
     $("#chedit").on("click", editChannel);
     $("#chremove").on("click", removeChannel);
     $("body").on("keyup", function(event) {
 		var keycode = event.which;
+        console.log(keycode);
         if (!(location.hash == "#dialog" || event.ctrlKey)) {
             switch (keycode) {
+                case 67:
+                    $("#brush").trigger("click");
+                    break;
 				case 73:
-					$("#learnmore").modal();
+                    if (location.hash != "#dialog") {
+                        $("#learnmore").modal();
+                    }
 					break;
 				case 189:
+                case 173:
                 case 109:
                     showVolume(false);
                     break;
 				case 187:
+                case 171:
                 case 107:
                     showVolume(true);
                     break;
@@ -93,13 +98,13 @@ $(document).ready(function() {
                         digit = 9;
                     }
                     if (digit < playlist.length) {
-                        startStream(playlist[digit]);
+                        startStream(playlist[digit][1]);
                         hint(
                             "<i class='fa fa-fw fa-play'></i> " +
-                            names[digit]);
+                            playlist[digit][0]);
                     } else if (digit !== undefined) {
                         hint(
-                            "<i class='fa fa-fw fa-exclamation-triangle'></i> Channel " +
+                            "<i class='fa fa-fw fa-exclamation-triangle'></i> Station " +
                             (digit + 1) + " doesn’t exist.");
                     }
             }
@@ -111,10 +116,6 @@ $(document).ready(function() {
 					break;
 			}
 		}
-    // }).on("click", function(event) {
-        // if (event.which == 1) {
-            // closehint();
-        // }
     }).on("vmousemove mousemove", function(event) {
         if (ismousedown) {
             setBar(event);
@@ -154,6 +155,12 @@ $(document).ready(function() {
     });
     $(".modal").on("show.bs.modal", function() {
         history.pushState(null, null, "#dialog");
+        $(".jumbotron").stop().animate({
+            "opacity": "0.15"
+        });
+        $(".navbar").children().stop().animate({
+            "opacity": "0"
+        });
     }).on("hide.bs.modal", modalCloser);
     $(window).on("hashchange", function() {
         if (location.hash === "") {
@@ -164,27 +171,67 @@ $(document).ready(function() {
     }).on("contextmenu", function() {
         return false;
     });
-	$("#addchannel").on("keyup", function(event) {
-		if (event.which == 13) {
-			$("#chadd").trigger("click");
-		}
-	});
+	$("input")
+        .on("keyup", function(event) {
+            if (event.which == 13) {
+                $("#findchannel").trigger("click");
+            }
+        }).on("input", function() {
+            $("#results").hide();
+            if ($(this).val() == "") {
+                $("#findchannel").addClass("disabled");
+            }
+            else {
+                $("#findchannel").removeClass("disabled");
+            }
+        });
+    $("form").on("submit", function(event) {
+        event.preventDefault();
+    });
 	$(window).on("beforeunload", function() {
-		notification.close();
+        if (notification != undefined) {
+            notification.close();
+        }
 	});
 	$("#addchannel").on("hidden.bs.modal", function() {
-		$("#newurl").val("");
-	});
+		$("input").val("");
+        $("#results").hide();
+	}).on("shown.bs.modal", function() {
+        $("input").select();
+    });
+    $("#brush").on("mousedown", function() {
+        if (! $(this).children().hasClass('disabled')) {
+            changeColor();
+        }
+    }).on("mouseenter", function() {
+        if (! $(this).children().hasClass('disabled')) {
+            $(this).stop().animate({
+                'width': '70px',
+                'height': '70px'
+            });
+            $(this).children().stop().animate({
+                'margin': '30px'
+            });
+        }
+    }).on("mouseleave", function() {
+        $(this).stop().animate({
+            'width': '50px',
+            'height': '50px'
+        });
+        $(this).children().stop().animate({
+            'margin': '20px'
+            
+        });
+    });
 });
 var prevdata, prevvolume, gearclicked, hinttimer, volumetimer, volumerequest, slow, timedout, firsttime;
 var appname = "radio·li·se";
-var noconnection = "Disconnected from server: Please check your network connection. This message will disappear as soon as the problem doesn’t exist anymore.";
-var timeoverflow = "Connection timed out: It takes too long to get a response from the server. This message will disappear as soon as the problem doesn’t exist anymore.";
+var noconnection = "Sudden disconnect: Please check your network connection.";
+var timeoverflow = "Sluggish connection: Couldn’t get a response from the server for over 15 seconds.";
 var visible = false;
-var appversion = "16.12.0";
+var appversion = "1.0-α";
 var nostream = "Radio off";
 var playlist = [];
-var names = [];
 var ismousedown = false;
 function setVolumeTimer() {
     clearTimeout(volumetimer);
@@ -226,6 +273,12 @@ function setBar(eventy) {
 	}
 }
 function modalCloser() {
+    $(".jumbotron").stop().animate({
+            "opacity": "1"
+    });
+    $(".navbar").children().stop().animate({
+        "opacity": "1"
+    });
     if (location.hash == "#dialog") {
         history.back();
     }
@@ -289,10 +342,10 @@ function showVolume(plus) {
 				width = 0;
 			}
         }
-		$("#volumeline").stop().animate({
+		$("#volumeline").finish().animate({
 			"width": width
 		});
-		$("#volumecircle").stop().animate({
+		$("#volumecircle").finish().animate({
 			"margin-left": width - 5
 		});
     });
@@ -305,11 +358,6 @@ function hint(text) {
         "top": "0px",
         "opacity": "1"
     });
-	if (location.search == "?lite") {
-		$(".jumbotron").finish().animate({
-			"margin-top": "80px"
-		});
-	}
 	$("#hintspace").finish().slideDown();
     hinttimer = setTimeout(function() {
         closehint();
@@ -320,11 +368,6 @@ function closehint() {
         "top": "-100px",
         "opacity": "0"
     });
-	if (location.search == "?lite") {
-		$(".jumbotron").finish().animate({
-			"margin-top": "25px"
-		});
-	}
 	$("#hintspace").finish().slideUp();
 }
 function updateFinish(string) {
@@ -338,8 +381,10 @@ function updateFinish(string) {
 	}
     if (string == nostream) {
         $('title').html(appname);
+        changeColor(true);
     } else {
         $('title').html(newchannel + " – " + appname);
+        changeColor(false);
     }
 	if (prevdata == undefined || prevdata.split(": ")[0] != newchannel) {
 		$("#channel").finish().hide(400, function() {
@@ -360,68 +405,50 @@ function startStream(url) {
         arg: url
     });
 }
-function addChannel() {
-	var newchannel = $("#newurl").val();
-	if (playlist.indexOf(newchannel) == -1) {
-		$.post('post.php', {
-			cmd: 5,
-			arg: newchannel
-		}).done(function() {
-			sync();
-		});
-	}
-	else {
-		hint("<i class='fa fa-fw fa-exclamation-triangle'></i>Channel already exists.");
-	}
+function addChannel(id, favicon, tags) {
+    $.get("http://www.radio-browser.info/webservice/v2/json/url/" + id, function(data) {
+        var notexisting = true;
+        for (i = 0; i < playlist.length; i++) {
+            if (playlist[i][1] == data.url) {
+                notexisting = false;
+                break;
+            } 
+        }
+        if (notexisting) {
+            playlist.push([data.name, data.url, favicon, tags]);
+            channelUpdate();
+        }
+        else {
+            hint("<i class='fa fa-fw fa-exclamation-triangle'></i>Station already added.");
+        }
+    });
 }
-function loadChannel(name, url) {
-	var toappend = "<tr style='white-space: nowrap; overflow-x: auto'><td><p class=\"text-right\" style=\"padding-top: 11px; padding-bottom: 10px; font-size: 18px\"><span class='text-primary'>" +
-        (playlist.length + 1) +
-        "</span></p></td><td><a onclick=\"startStream('" + url +
-        "');\" class=\"btn btn-lg btn-link\" style='text-align: left'><b>" +
-        name +
-        "</b></a></td>";
-	if (location.search != "?lite") {
-		toappend += "<td style=\"text-align: right\"><a onclick='$(\"#todelete\").text(\"" + name + "\"); gearclicked = \"" + url + "\"' class=\"btn btn-lg btn-link\" style=\"height: 46px\" data-toggle=\"modal\" title=\"Remove “" + name + "”\" data-target=\"#channeloptions\"><i class=\"fa fa-fw fa-trash-o\" style=\"padding-top: 4px\"></i></a></td>";
-	}
-	toappend += "</tr>";
-    $("#channels").append(toappend);
-    names.push(name);
-    playlist.push(url);
-	if (location.search == "?lite") {
-		$("#addarea, .navbar").remove();
-		$(".jumbotron").css({
-			"background": "none",
-			"box-shadow": "none",
-			"padding": "0",
-			"margin-top": "25px"
-		}).find(".section-primary, .text-primary, a").css({
-			"color": "white"
-		});
-		$("#alertmodal").css({
-			"background-color": "#222"
-		});
-		$(".sh-content").css({
-			"box-shadow": "none"
-		})
-		$("#alert-sm").css({
-			"width": "100%",
-			"padding": "0",
-			"margin": "0"
-		});
-		$(".jumbotron, .sh:not(#volumemodal), .modal").css({
-			"zoom": "150%"
-		});
-		$("#volumemodal").remove();
-	}
+function channelUpdate(locally = true) {
+    if (locally) {
+        sync(true);
+    }
+    $("table").empty();
+    for (i = 0; i < playlist.length; i++) {
+        var content = "<tr><td style='vertical-align: middle'><div style='background-image: url(\"" + playlist[i][2] + "\"); background-size: contain; background-repeat: no-repeat; width: 30px; height: 30px; margin-right: 20px'></div></td><td><a onclick='startStream(\"" + playlist[i][1] + "\")'><div style='padding-top: 20px'><span class='media-body'><h4 class='media-heading text-primary' style='font-weight: bold'>" + playlist[i][0] + "</h4><h4>";
+        for (z = 0; z < playlist[i][3].split(",").length; z++) {
+            content += "<span class='label text-primary' style='background-color: #dddddd'>" + playlist[i][3].split(",")[z] + "</span> ";
+        }
+        content += "</h4></span></div></a></td><td style='padding-bottom: 10px'><a class='text-primary' id='chremove' onclick='gearclicked = " + i + "; $(\"#todelete\").text(\"" + playlist[i][0] + "\"); $(\"#channeloptions\").modal()'><h4><i class='fa fa-fw fa-trash-o'></i></h4></a></td></tr>";
+        $("table").append(content);
+    }
+    $("table").find(".text-primary").css({
+       "color": prevcolor
+    });
+    if (playlist.length != 0) {
+		$("#zero").hide();
+    }
+    else {
+		$("#zero").show();        
+    }
 }
 function removeChannel() {
-	$.post("post.php", {
-		cmd: 7,
-		arg: gearclicked
-	}).done(function() {
-		sync();
-	});
+    playlist.splice(gearclicked, 1);
+    channelUpdate();
 }
 function editChannel() {
     $("#editchannel").modal();
@@ -478,31 +505,79 @@ function updateStart() {
 				updateStart();
 			}, 2000);
 		});
-		sync();
 }
-function sync() {
-	$.post("post.php", {
-		cmd: 6
-	}, function(data) {
-		if (playlist.toString() != data.substring(0, data.length - 1).split(";")) {
-			names = [];
-			playlist = [];
-			$("#channels").empty();
-			var count = data.split(";").length - 1;
-			var channels = data.split(";", count);
-			if (count != 0) {
-				for (var i = 0; i < count; i++) {
-					loadChannel("Channel " + (i + 1), channels[i]);
-				}
-				$("#channellist").show();
-				$("#zero").hide();
-			}
-			else {
-				$("#channellist").hide();
-				$("#zero").show();
-			}
-		}
-	});
+function sync(locally = false) {
+    $("#loading").stop().fadeIn();
+    $.post("post.php", {
+        cmd: 6
+    }, function(data) {
+        if (JSON.stringify(playlist) != data) {
+            if (locally) {
+                $.post("post.php", {
+                    cmd: 5,
+                    arg: JSON.stringify(playlist)
+                });
+            }
+            else {
+                playlist = JSON.parse(data);
+                channelUpdate(false);              
+            }
+        }
+        $("#loading").hide();
+    });
+}
+function findChannel(name) {
+    $("input").blur();
+    $("#loading").stop().fadeIn();
+    $.get("http://www.radio-browser.info/webservice/json/stations/byname/" + name, function(data) {
+        $("#results").empty();
+        var sum = 0;
+        for(i = 0; i < data.length; i++) {
+            if (data[i].lastcheckok == "1") {
+                var current = "<div><a data-dismiss='modal' class='white' onclick='addChannel(\"" + data[i].id + "\", \"" + data[i].favicon + "\", \"" + data[i].country + "," + data[i].state + "," + data[i].tags + "\")' ><div class='media-body'><h4 class='media-heading'>" + data[i].name + "</h4><p class='text-muted'><span class='label'>" + data[i].country + "</span> <span class='label'>" + data[i].state + "</span> ";
+                if (data[i].tags != "") { 
+                    for(z = 0; z < data[i].tags.split(",").length; z++) {
+                        current += "<span class='label'>" + data[i].tags.split(",")[z] + "</span> "
+                    }
+                }
+                else {
+                    current += "<br>";
+                }
+                current += "</p></div></a></div>";
+                $("#results").append(current);
+                sum++;
+            }
+        }
+        if(sum == 0) {
+            $("#results").html("<div style='font-size: 18px; text-align: center'><i class='fa fa-fw fa-meh-o'></i>Oops! No matching stations found.</div>");
+        }
+        $("#loading").hide();
+        $("#results").show(400);
+    });
+}
+var prevcolor;
+function changeColor(gray = undefined) {        
+    var color;
+    if (gray) {
+        color = '#333333;';
+    }
+    else {
+        color = 'hsl(' + Math.floor(Math.random() * 360) + ', 50%, 30%);';
+    }
+    prevcolor = color;
+    $(".text-primary, .btn-link:not(.white)").finish().animate({
+        "color": color
+    }, 2000); 
+    $("body, .section-primary").finish().animate({
+        "background-color": color
+    }, 2000, function() {
+        $("#brush").children().removeClass("fa-refresh fa-spin disabled").addClass("fa-paint-brush");
+        $("#brush").css({'cursor': 'pointer'});
+    }); 
+    $("#brush").children().removeClass('fa-paint-brush').addClass('fa-refresh fa-spin disabled');
+    $("#brush").stop().animate({'width': '50px', 'height': '50px'});
+    $("#brush").children().stop().animate({'margin': '20px'});
+    $("#brush").css({'cursor': 'auto'});
 }
 function notify(songinfo, channel) {
 	try {
@@ -533,12 +608,12 @@ function toggle(on) {
 	var icon = $("#stop").children();
 	if (on) {
 		icon
-			.removeClass("fa-toggle-off")
-			.addClass("fa-toggle-on");
+            .removeClass("fa-toggle-off")
+            .addClass("fa-toggle-on");
 	}
 	else {
 		icon
-			.removeClass("fa-toggle-on")
-			.addClass("fa-toggle-off");
+            .removeClass("fa-toggle-on")
+            .addClass("fa-toggle-off");
 	}
 }
