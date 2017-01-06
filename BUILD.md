@@ -65,3 +65,5 @@ There might also be other entries, but you should leave them as they are if you 
 Of course you may use any other web server software that supports PHP and any other way to install the necessary packages instead. If you don't want to keep Git, you can remove it like this:
 
     apt-get remove git
+
+**Thank you very much for using radio·li·se and have fun!**
