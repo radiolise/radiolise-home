@@ -5,7 +5,7 @@ Radio for GNU/Linux servers (or just radio·li·se) is a freedom-respecting grap
 
 Use of the software is especially recommended on energy efficient single board computers, such as the Raspberry Pi.
 
-Copyright © 2016-2017 celsiuswr
+© 2016-2017 celsiuswr
 
 radio·li·se is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
