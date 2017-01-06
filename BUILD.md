@@ -1,4 +1,4 @@
-# Set up radio·li·se using APT and Apache 2
+# Set up radio·li·se using APT
 
 **ACTUALLY, THIS INSTRUCTION ONLY WORKS ON DEBIAN-BASED LINUX DISTRIBUTIONS!** (e.g. Debian itself, Ubuntu or Linux Mint)
 
