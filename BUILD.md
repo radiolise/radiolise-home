@@ -9,7 +9,7 @@ Ensure that everything is up-to-date:
     apt-get update
     apt-get upgrade
     
-Install Apache 2, PHP, the Apache 2 PHP module, MPD and MPC:
+Install Apache 2, PHP, the Apache 2 PHP module, Git, MPD and MPC:
     
     apt-get install apache2 php libapache2-mod-php git mpd mpc
     
