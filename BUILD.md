@@ -1,6 +1,6 @@
 # radio·li·se setup instruction for Debian-based Linux distributions with APT
 
-Log on as "root" or make sure that you "use" sudo with every single command.
+Log on as "root" or make sure that you use "sudo" with every single command.
 
 Perform a package update:
 
