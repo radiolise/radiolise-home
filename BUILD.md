@@ -7,7 +7,7 @@ Ensure that all packages are up-to-date:
     apt-get update
     apt-get upgrade
     
-Install Apache 2, PHP for code execution on the server, the Apache2 PHP module to enable integration of PHP in Apache, Git to clone this repository, MPD for playing music on your server and MPC to enable integration of MPD in radio·li·se:
+Install Apache 2, PHP, the Apache 2 PHP module, MPD and MPC:
     
     apt-get install apache2 php libapache2-mod-php git mpd mpc
     
@@ -26,3 +26,5 @@ Move only the necessary files to the virtual host directory:
 Allow radio·li·se to save station information on your server (the user www-data is responsible for that):
     
     chown www-data /var/www/html/channels.json
+
+Of course you may use any other web server software that supports PHP and any other package manager you know instead.
