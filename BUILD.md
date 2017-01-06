@@ -13,7 +13,7 @@ Start a new terminal session as "root" or make sure that you use "sudo" with eve
     
     apt-get install apache2 php libapache2-mod-php git mpd mpc
     
-If this didn't work and you want to install PHP 5 instead:
+If the latest PHP version isn't available, you may use PHP 5 instead:
 
     apt-get install apache2 php5 libapache2-mod-php5 git mpd mpc
     
