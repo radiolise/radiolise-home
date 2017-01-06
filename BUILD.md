@@ -2,7 +2,7 @@
 
 Log on as "root" or make sure that you use "sudo" with every single command.
 
-Perform a package update:
+Ensure that all packages are up-to-date:
 
     apt-get update
     apt-get upgrade
