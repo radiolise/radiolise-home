@@ -4,7 +4,7 @@
 
 Start a new terminal session as "root" or make sure that you use "sudo" with every single command.
 
-Ensure that all packages are up-to-date:
+Ensure that everything is up-to-date:
 
     apt-get update
     apt-get upgrade
