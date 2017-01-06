@@ -4,12 +4,12 @@
 
 Start a new terminal session as "root" or make sure that you use "sudo" with every single command.
 
-Ensure that everything is up-to-date:
+# 1. Ensure that everything is up-to-date:
 
     apt-get update
     apt-get upgrade
     
-Install Apache 2, PHP, the Apache 2 PHP module, Git, MPD and MPC:
+# 2. Install Apache 2, PHP, the Apache 2 PHP module, Git, MPD and MPC:
     
     apt-get install apache2 php libapache2-mod-php git mpd mpc
     
@@ -17,15 +17,15 @@ If this didn't work and you want to install PHP 5 instead:
 
     apt-get install apache2 php5 libapache2-mod-php5 git mpd mpc
     
-Clone this repository:
+# 3. Clone this repository:
     
     git clone https://github.com/celsiuswr/radiolise
     
-Move only the necessary files to the virtual host directory:
+# 4. Move only the necessary files to the virtual host directory:
     
     mv radiolise/src/* /var/www/html/
     
-Allow radio·li·se to save station information on your server (the user www-data is responsible for that):
+# 5. Allow radio·li·se to save station information on your server (the user www-data is responsible for that):
     
     chown www-data /var/www/html/channels.json
 
