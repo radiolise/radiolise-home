@@ -1,4 +1,4 @@
-# Setting up radio·li·se using APT and Git
+# Setup using APT and Git
 
 **ACTUALLY, THIS INSTRUCTION ONLY WORKS ON DEBIAN-BASED LINUX DISTRIBUTIONS!** (e.g. Debian itself, Ubuntu or Linux Mint)
 
