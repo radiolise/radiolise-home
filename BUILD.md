@@ -1,6 +1,6 @@
 # One of many ways to set up radio·li·se
 
-**Actually, this instruction only works with Debian-based Linux distributions (e.g. Debian itself, Ubuntu or Linux Mint)!**
+**Actually, this instruction only works with Debian-based Linux distributions!** (e.g. Debian itself, Ubuntu or Linux Mint)
 
 Log on as "root" or make sure that you use "sudo" with every single command.
 
