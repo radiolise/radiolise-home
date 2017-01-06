@@ -23,6 +23,6 @@ Move only the necessary files to the virtual host directory:
     
     mv radiolise/src/* /var/www/html/
     
-Allow radio·li·se to save station information on your server:
+Allow radio·li·se to save station information on your server (the user www-data is responsible for that):
     
     chown www-data /var/www/html/channels.json
