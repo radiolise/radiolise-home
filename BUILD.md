@@ -2,7 +2,7 @@
 
 **Actually, this instruction only works with Debian-based Linux distributions!** (e.g. Debian itself, Ubuntu or Linux Mint)
 
-Log on as "root" or make sure that you use "sudo" with every single command.
+Start a new terminal session as "root" or make sure that you use "sudo" with every single command.
 
 Ensure that all packages are up-to-date:
 
