@@ -27,4 +27,4 @@ Allow radio·li·se to save station information on your server (the user www-dat
     
     chown www-data /var/www/html/channels.json
 
-Of course you may use any other web server software that supports PHP and any other package manager you know instead.
+Of course you may use any other web server software that supports PHP and any other way to install the necessary packages instead.
