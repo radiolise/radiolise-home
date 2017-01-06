@@ -28,8 +28,37 @@ If the latest PHP version isn't available, you may use PHP 5 instead:
 ### 5. Allow radio·li·se to save station information on your server
 
 The user www-data is responsible for that:
-    
+
     chown www-data /var/www/html/channels.json
+    
+### 6. Set mixer type to software
+
+Edit the file "/etc/mpd.conf".
+    
+    nano /etc/mpd.conf
+
+Find the entry "audio_output" without a "#" sign.
+Uncomment "mixer_type" by removing its "#" sign.
+Change its value from "hardware" to "software"
+
+**Example:**
+
+BEFORE:
+
+    audio_output {
+        type        "alsa"
+        name        "My ALSA device"
+    #   mixer_type  "hardware"
+    }
+
+AFTERWARDS:
+
+    audio_output {
+        type        "alsa"
+        name        "My ALSA device"
+        mixer_type  "software"
+    }
+
 -----
 Of course you may use any other web server software that supports PHP and any other way to install the necessary packages instead. If you don't want to keep Git, you can remove it like this:
 
