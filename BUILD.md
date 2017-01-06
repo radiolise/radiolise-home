@@ -21,7 +21,7 @@ If the latest PHP version isn't available, you may use PHP 5 instead:
     
     git clone https://github.com/celsiuswr/radiolise
     
-### 4. Move only the necessary files to the virtual host directory
+### 4. Move the necessary files to the virtual host directory
     
     mv radiolise/src/* /var/www/html/
     
