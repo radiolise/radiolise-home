@@ -30,7 +30,7 @@ If the latest PHP version isn't available, you may use PHP 5 instead:
 The user www-data is responsible for that:
     
     chown www-data /var/www/html/channels.json
-
+-----
 Of course you may use any other web server software that supports PHP and any other way to install the necessary packages instead. If you don't want to keep Git, you can remove it like this:
 
     apt-get remove git
