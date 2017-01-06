@@ -11,7 +11,7 @@ Install Apache 2 for hosting, PHP for code execution on the server, the Apache2 
     
     apt-get install apache2 php libapache2-mod-php git mpd mpc
     
-If this didn't work or you want to install PHP 5 instead:
+If this didn't work and you want to install PHP 5 instead:
 
     apt-get install apache2 php5 libapache2-mod-php5 git mpd mpc
     
