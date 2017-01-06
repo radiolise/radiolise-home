@@ -25,7 +25,9 @@ If this didn't work and you want to install PHP 5 instead:
     
     mv radiolise/src/* /var/www/html/
     
-## 5. Allow radio·li·se to save station information on your server (the user www-data is responsible for that):
+## 5. Allow radio·li·se to save station information on your server
+
+The user www-data is responsible for that:
     
     chown www-data /var/www/html/channels.json
 
