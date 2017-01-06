@@ -7,7 +7,7 @@ Perform a package update:
     apt-get update
     apt-get upgrade
     
-Install Apache 2 for hosting, PHP for code execution on the server, the Apache2 PHP module to enable integration of PHP in Apache, Git to clone this repository, MPD for playing music on your server and MPC to enable integration in PHP:
+Install Apache 2 for hosting, PHP for code execution on the server, the Apache2 PHP module to enable integration of PHP in Apache, Git to clone this repository, MPD for playing music on your server and MPC to enable integration of MPD in radio·li·se:
     
     apt-get install apache2 php libapache2-mod-php git mpd mpc
     
