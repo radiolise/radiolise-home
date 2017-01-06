@@ -1,4 +1,4 @@
-# Of of many ways to set up radio·li·se
+# One of many ways to set up radio·li·se
 
 **This instruction only works with Debian-based Linux distributions (e.g. Debian itself or Ubuntu)!**
 
