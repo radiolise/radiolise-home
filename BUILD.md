@@ -1,4 +1,6 @@
-# How to set up radio·li·se on Debian-based Linux distributions using APT and Apache 2
+# Of of many ways to set up radio·li·se
+
+**This instruction only works with Debian-based Linux distributions (e.g. Debian itself or Ubuntu)!
 
 Log on as "root" or make sure that you use "sudo" with every single command.
 
