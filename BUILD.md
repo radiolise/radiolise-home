@@ -1,4 +1,4 @@
-# radio·li·se setup instruction for Debian-based Linux distributions with APT
+# How to set up radio·li·se on Debian-based Linux distributions using APT and Apache 2
 
 Log on as "root" or make sure that you use "sudo" with every single command.
 
@@ -7,7 +7,7 @@ Ensure that all packages are up-to-date:
     apt-get update
     apt-get upgrade
     
-Install Apache 2 for hosting, PHP for code execution on the server, the Apache2 PHP module to enable integration of PHP in Apache, Git to clone this repository, MPD for playing music on your server and MPC to enable integration of MPD in radio·li·se:
+Install Apache 2, PHP for code execution on the server, the Apache2 PHP module to enable integration of PHP in Apache, Git to clone this repository, MPD for playing music on your server and MPC to enable integration of MPD in radio·li·se:
     
     apt-get install apache2 php libapache2-mod-php git mpd mpc
     
