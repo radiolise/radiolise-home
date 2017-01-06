@@ -59,7 +59,7 @@ AFTERWARDS:
         mixer_type  "software"
     }
 
-There might also be other entries, but you should leave them as they are.
+There might also be other entries, but you should leave them as they are if you don't wish to have any further changes.
 
 -----
 Of course you may use any other web server software that supports PHP and any other way to install the necessary packages instead. If you don't want to keep Git, you can remove it like this:
