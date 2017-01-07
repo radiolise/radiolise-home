@@ -1,6 +1,6 @@
 # Setup using APT and Git
 
-**ACTUALLY, THIS INSTRUCTION ONLY WORKS ON DEBIAN-BASED LINUX DISTRIBUTIONS!** (e.g. Debian itself, Ubuntu or Linux Mint)
+**ACTUALLY, THIS INSTRUCTION ONLY WORKS ON DEBIAN-BASED LINUX DISTRIBUTIONS!** (e.g. Debian itself, Raspbian, Ubuntu or Linux Mint)
 
 Start a new terminal session as "root" or make sure that you use "sudo" with every single command.
 
