@@ -12,4 +12,4 @@ radio·li·se home is distributed in the hope that it will be useful, but WITHOU
 You should have received a copy of the GNU Affero General Public License along with radio·li·se home. If not, see http://www.gnu.org/licenses/.
 
 
-**If you'd like to know how to set up radio·li·se, you may [read this instruction](BUILD.md).**
+**If you'd like to know how to set up radio·li·se home, you may [read this instruction](BUILD.md).**
