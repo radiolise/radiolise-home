@@ -1,4 +1,4 @@
-# radio·li·se HOME
+# radio·li·se - Home edition
 <img src="radiolise.png" height=100em>
 
 The home edition of Radio for GNU/Linux servers (or just radio·li·se) is a freedom-respecting web app that allows you to listen to your favorite radio stations. You can easily access the user interface via your favorite web browser. The streams are received and played by your private GNU/Linux PHP server that also hosts the software.
