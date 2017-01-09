@@ -25,7 +25,7 @@ If the latest PHP version isn't available, you may use PHP 5 instead:
     
     mv radiolise/src/* /var/www/html/
     
-### 5. Allow radio·li·se to save station information on your server
+### 5. Allow radio·li·se home to save station information on your server
 
 The user www-data is responsible for that:
 
@@ -66,4 +66,4 @@ Of course you may use any other web server software that supports PHP and any ot
 
     apt-get remove git
 
-**Thank you very much for using radio·li·se and have fun!**
+**Thank you very much for using radio·li·se home and have fun!**
