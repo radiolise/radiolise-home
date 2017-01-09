@@ -19,7 +19,7 @@ If the latest PHP version isn't available, you may use PHP 5 instead:
     
 ### 3. Clone this repository
     
-    git clone https://github.com/celsiuswr/radiolise
+    git clone https://github.com/radiolise/home
     
 ### 4. Move the necessary files to the virtual host directory
     
