@@ -16,12 +16,17 @@ $(document).ready(function() {
 			var file = data[3];
 			hint("Welcome to the user interface!");
             var command = "chown " + user + " " + vdir + "/" + file
-			updateFinish("We’re almost ready!: <p/><div style='text-align: justify'>Congratulations! It seems like <span style='text-shadow: -1px 0 1px #222222, 0 1px 1px #222222, 1px 0 1px #222222, 0 -1px 1px #222222;'><span style='color: #ffffff'>radio</span><span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span></span> has been set up successfully (almost). However, we need both read and write access to the file \"" + file + "\" to save new stations. To fix the problem, you should tell the server to change the owner of that file by typing<p/><div class='text-left' style='background-color: #f9f2f4; white-space: nowrap; overflow-x: auto;'><code>" + command + "</code></div><p/>into a terminal with root privileges.</div>");
+            needaccess = "We’re almost ready!: <p/><div style='text-align: justify'>Congratulations! It seems like <span style='text-shadow: -1px 0 1px #222222, 0 1px 1px #222222, 1px 0 1px #222222, 0 -1px 1px #222222;'><span style='color: #ffffff'>radio</span><span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span></span> has been set up successfully (almost). However, we need both read and write access to the file \"" + file + "\" to save new stations. To fix the problem, you should tell the server to change the owner of that file by typing<p/><div class='text-left' style='background-color: #f9f2f4; white-space: nowrap; overflow-x: auto;'><code>" + command + "</code></div><p/>into a terminal with root privileges.</div>"
+			updateFinish(needaccess);
 			$("#maincontrols").hide();
+            $("#loading").hide();
 		}
 		else {
 			updateStart();
             sync();
+            relaxtimer = setTimeout(function() {
+                relax();
+            }, 5000);
 		}
 	});
 	$("#newname, #newurl").val(null);
@@ -60,14 +65,6 @@ $(document).ready(function() {
         console.log(keycode);
         if (!(location.hash == "#dialog" || event.ctrlKey)) {
             switch (keycode) {
-                case 67:
-                    $("#brush").trigger("click");
-                    break;
-				case 73:
-                    if (location.hash != "#dialog") {
-                        $("#learnmore").modal();
-                    }
-					break;
 				case 189:
                 case 173:
                 case 109:
@@ -79,6 +76,7 @@ $(document).ready(function() {
                     showVolume(true);
                     break;
                 case 32:
+                    $(window).scrollTop(0);
 					if ($("#stop").hasClass("disabled") == false) {
 						if ($("#stop").children().hasClass("fa-toggle-off")) {
 							hint("<i class='fa fa-fw fa-play'></i> Turned radio on");
@@ -155,6 +153,7 @@ $(document).ready(function() {
     });
     $(".modal").on("show.bs.modal", function() {
         history.pushState(null, null, "#dialog");
+        awake();
         $(".jumbotron").stop().animate({
             "opacity": "0.15"
         });
@@ -170,6 +169,16 @@ $(document).ready(function() {
         return false;
     }).on("contextmenu", function() {
         return false;
+    }).on("mousemove mousedown keydown touchstart", function() {
+            clearTimeout(relaxtimer);
+            awake();
+            relaxtimer = setTimeout(function() {
+                relax(); 
+            }, 10000);
+    }).on("resize", function() {
+        if (relaxed) {
+            relax();
+        }
     });
 	$("input")
         .on("keyup", function(event) {
@@ -199,37 +208,13 @@ $(document).ready(function() {
 	}).on("shown.bs.modal", function() {
         $("input").select();
     });
-    $("#brush").on("mousedown", function() {
-        if (! $(this).children().hasClass('disabled')) {
-            changeColor();
-        }
-    }).on("mouseenter", function() {
-        if (! $(this).children().hasClass('disabled')) {
-            $(this).stop().animate({
-                'width': '70px',
-                'height': '70px'
-            });
-            $(this).children().stop().animate({
-                'margin': '30px'
-            });
-        }
-    }).on("mouseleave", function() {
-        $(this).stop().animate({
-            'width': '50px',
-            'height': '50px'
-        });
-        $(this).children().stop().animate({
-            'margin': '20px'
-            
-        });
-    });
 });
-var prevdata, prevvolume, gearclicked, hinttimer, volumetimer, volumerequest, slow, timedout, firsttime;
-var appname = "radio·li·se";
+var prevdata, prevvolume, gearclicked, hinttimer, volumetimer, volumerequest, slow, timedout, firsttime, relaxtimer, needaccess;
+var appname = "radio·li·se home";
 var noconnection = "Sudden disconnect: Please check your network connection.";
-var timeoverflow = "Sluggish connection: Couldn’t get a response from the server for over 15 seconds.";
+var timeoverflow = "No response: Couldn’t get a response from the server for over 15 seconds.";
 var visible = false;
-var appversion = "1.0-α";
+var appversion = "1.0.1-α";
 var nostream = "Radio off";
 var playlist = [];
 var ismousedown = false;
@@ -281,6 +266,7 @@ function modalCloser() {
     });
     if (location.hash == "#dialog") {
         history.back();
+        $(window).trigger("mousemove");
     }
 }
 function buttonhider(plus, thisvolume) {
@@ -353,6 +339,7 @@ function showVolume(plus) {
 }
 function hint(text) {
     clearTimeout(hinttimer);
+    awake();
     $("#alerttext").html(text);
     $("#alertmodal").finish().animate({
         "top": "0px",
@@ -379,12 +366,23 @@ function updateFinish(string) {
 	else {
 		firsttime = false;
 	}
-    if (string == nostream) {
+    if (string == nostream || string == noconnection || string == timeoverflow || string == needaccess) {
         $('title').html(appname);
         changeColor(true);
+        stopV();
+        awake();
     } else {
         $('title').html(newchannel + " – " + appname);
         changeColor(false);
+        if (vinterval == undefined) {
+            visualise();
+        }
+        if (prevdata == nostream || prevdata == noconnection || prevdata == timeoverflow || prevdata == needaccess) {
+            clearTimeout(relaxtimer);
+            relaxtimer = setTimeout(function() {
+                relax(); 
+            }, 10000);
+        }
     }
 	if (prevdata == undefined || prevdata.split(": ")[0] != newchannel) {
 		$("#channel").finish().hide(400, function() {
@@ -406,7 +404,7 @@ function startStream(url) {
     });
 }
 function addChannel(id, favicon, tags) {
-    $.get("http://www.radio-browser.info/webservice/v2/json/url/" + id, function(data) {
+    $.post("http://www.radio-browser.info/webservice/v2/json/url/" + id, function(data) {
         var notexisting = true;
         for (i = 0; i < playlist.length; i++) {
             if (playlist[i][1] == data.url) {
@@ -456,14 +454,11 @@ function editChannel() {
 function updateStart() {
 		if (prevdata != noconnection) {
 			slow = setTimeout(function() {
-				hint("It seems like the server needs a long time to respond.");
-				timedout = setTimeout(function() {
-					if (prevdata != timeoverflow) {
-						updateFinish(timeoverflow);
-						$("#maincontrols").finish().slideUp();
-					}
-				}, 10000);
-			}, 5000);
+                if (prevdata != timeoverflow) {
+                    updateFinish(timeoverflow);
+                    $("#maincontrols").finish().slideUp();
+                }
+			}, 15000);
 		}
 		$.post("post.php", {
 			cmd: 0
@@ -500,7 +495,6 @@ function updateStart() {
 			}
 		}).always(function() {
 			clearTimeout(slow);
-			clearTimeout(timedout);
 			setTimeout(function() {
 				updateStart();
 			}, 2000);
@@ -529,12 +523,12 @@ function sync(locally = false) {
 function findChannel(name) {
     $("input").blur();
     $("#loading").stop().fadeIn();
-    $.get("http://www.radio-browser.info/webservice/json/stations/byname/" + name, function(data) {
+    $.post("http://www.radio-browser.info/webservice/json/stations/byname/" + name, function(data) {
         $("#results").empty();
         var sum = 0;
         for(i = 0; i < data.length; i++) {
             if (data[i].lastcheckok == "1") {
-                var current = "<div><a data-dismiss='modal' class='white' onclick='addChannel(\"" + data[i].id + "\", \"" + data[i].favicon + "\", \"" + data[i].country + "," + data[i].state + "," + data[i].tags + "\")' ><div class='media-body'><h4 class='media-heading'>" + data[i].name + "</h4><p class='text-muted'><span class='label'>" + data[i].country + "</span> <span class='label'>" + data[i].state + "</span> ";
+                var current = "<div><a data-dismiss='modal' class='white' href='#' onclick='addChannel(\"" + data[i].id + "\", \"" + data[i].favicon + "\", \"" + data[i].country + "," + data[i].state + "," + data[i].tags + "\")' ><div class='media-body'><h4 class='media-heading'>" + data[i].name + "</h4><p class='text-muted'><span class='label'>" + data[i].country + "</span> <span class='label'>" + data[i].state + "</span> ";
                 if (data[i].tags != "") { 
                     for(z = 0; z < data[i].tags.split(",").length; z++) {
                         current += "<span class='label'>" + data[i].tags.split(",")[z] + "</span> "
@@ -570,14 +564,64 @@ function changeColor(gray = undefined) {
     }, 2000); 
     $("body, .section-primary").finish().animate({
         "background-color": color
-    }, 2000, function() {
-        $("#brush").children().removeClass("fa-refresh fa-spin disabled").addClass("fa-paint-brush");
-        $("#brush").css({'cursor': 'pointer'});
-    }); 
-    $("#brush").children().removeClass('fa-paint-brush').addClass('fa-refresh fa-spin disabled');
-    $("#brush").stop().animate({'width': '50px', 'height': '50px'});
-    $("#brush").children().stop().animate({'margin': '20px'});
-    $("#brush").css({'cursor': 'auto'});
+    }, 2000); 
+}
+var relaxed = false;
+function relax() {
+    if (prevdata != nostream && prevdata != noconnection && prevdata != timeoverflow && prevdata != needaccess && location.hash != "#dialog") {
+        relaxed = true;
+        $(".navbar").animate({
+            "opacity": "0"
+        });
+        $(".jumbotron").animate({
+            "background-color": "transparent"
+        });
+        $("#channel, #info").removeClass("text-primary").stop().animate({
+            "color": "#ffffff",
+            "font-size": Math.sqrt($(window).width() * 1.2) + "pt"
+        });
+        $("#maincontrols").slideUp();
+        $("#space").slideDown();
+    }
+}
+function awake() {
+    if (relaxed) {
+        relaxed = false;
+        $(".navbar").finish().animate({
+            "opacity": "1"
+        });
+        $(".jumbotron").finish().animate({
+            "background-color": "#ffffff"
+        });
+        $("#channel, #info").addClass("text-primary").finish().animate({
+            "color": prevcolor,
+        });
+        $("#channel").finish().animate({
+            "font-size": "18pt"
+        });
+        $("#info").finish().animate({
+            "font-size": "16pt"
+        });
+        $("#maincontrols").finish().slideDown();
+        $("#space").finish().slideUp();
+    }
+}
+var vinterval;
+function visualise() {
+    vinterval = setInterval(function() {
+        $("#visualization").children().each(function() {
+            $(this).finish().animate({
+                "top": Math.random() * 15 + 50 + "%"
+            }, 100);
+        });
+    }, 100);
+}
+function stopV() {
+    clearInterval(vinterval);
+    vinterval = undefined;
+     $("#visualization").children().stop().animate({
+        "top": "100%" 
+     });
 }
 function notify(songinfo, channel) {
 	try {

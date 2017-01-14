@@ -13,7 +13,6 @@
   <body>
     <div id="loading" style="position: fixed; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 9999; width: 100%; height: 100%"><span style="position: fixed; top: calc(50% - 2.5em); left: calc(50% - 2.5em); margin: 0 auto; color: #ffffff"><i class="fa fa-fw fa-5x fa-refresh fa-spin"></i></span></div>
     <div style="background-color: #000000; opacity: 0.5; left: 0; top: 0; width: 100%; height: 100%; position: fixed"></div>
-    <div id="brush" style="box-shadow: 0 0 10px black; background-color: #ffffff; position: fixed; right: 0px; bottom: 0px; width: 50px; height: 50px; border-top-left-radius: 70px; cursor: pointer; z-index: 1"><i class="fa fa-fw fa-paint-brush" style="font-size: 20px; margin: 20px"></i></div>
 	<div class="navbar navbar-default navbar-inverse navbar-fixed-top" id="realbar">
 	  <div class="container">
 		<div class="navbar-header">
@@ -40,8 +39,13 @@
 			<div class="row">
 			  <div class="col-md-12">
 				<div class="jumbotron text-center">
-					  <div id="channel" class="text-primary" style="display: none; font-size: 18pt; font-weight: bold"></div>
-					  <div id="info" class="text-primary" style="display: none; font-size: 16pt"></div>
+                    <div style="font-size: 18pt; font-weight: bold; white-space: nowrap">
+					  <div id="channel" class="text-primary" style="display: none; white-space: nowrap"></div>
+                    </div>
+					  <div id="space" style="display: none; height: 50px"></div>
+                    <div style="font-size: 16pt; overflow-x: scroll;">
+					  <div id="info" class="text-primary" style="display: none; white-space: nowrap"></div>
+                    </div>
 					  <br>
 					<div id="maincontrols">
 					  <div>
@@ -83,11 +87,11 @@
 				<h4 class="white">
                     <br>
                     <b><u>Radio</u> for GNU/<span style='color: #ffec80'><u>Li</u></span>nux <span style='color: #80f6ff'><u>se</u></span>rvers</b><br><br>
+                    <u>Home</u> edition<br><br>
                     Version <span id="aboutversion"></span><br><br><br>
-                    <div style="text-align: justify">Copyright © 2016-2017 celsiuswr<br><br>
-                    radio<span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span> is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br><br>
-                    radio<span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span> is distributed in the hope that it will be useful, but <span style="color: #ff0000">without any warranty</span>; without even the implied warranty of <span style="color: #ff0000">merchantability</span> or <span style="color: #ff0000">fitness for a particular purpose</span>. See the GNU Affero General Public License for more details.<br><br>
-                    You should have received a copy of the GNU Affero General Public License along with radio<span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span>. If not, see <a href="http://www.gnu.org/licenses/" target="_blank" class="btn-link white">http://www.gnu.org/licenses/<i class="fa fa-fw fa-external-link"></i></a>.<br><br></div>
+                    radio<span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span> home is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br><br>
+                    radio<span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span> home is distributed in the hope that it will be useful, but <span style="color: #ff0000">without any warranty</span>; without even the implied warranty of <span style="color: #ff0000">merchantability</span> or <span style="color: #ff0000">fitness for a particular purpose</span>. See the GNU Affero General Public License for more details.<br><br>
+                    You should have received a copy of the GNU Affero General Public License along with radio<span style='color: #ffec80'>li</span><span style='color: #80f6ff'>se</span> home. If not, see <a href="http://www.gnu.org/licenses/" target="_blank" class="btn-link white">http://www.gnu.org/licenses/<i class="fa fa-fw fa-external-link"></i></a>.<br><br>
                     <a class="btn btn-link btn-lg white" href="https://github.com/celsiuswr/radiolise" target="_blank"><i class="fa fa-fw fa-code"></i>View source<i class="fa fa-fw fa-external-link"></i></a>
                     <a class="btn btn-link btn-lg white" href="https://github.com/celsiuswr/radiolise/issues/new" target="_blank"><i class="fa fa-fw fa-bug"></i>Report an issue<i class="fa fa-fw fa-external-link"></i></a><br>
 				</h4>
@@ -164,6 +168,18 @@
 			  </div>
 			</div>
 		  </div>
+		</div>
+        <div id="visualization">
+            <div class="vBar" style="left: 1%"></div>
+            <div class="vBar" style="left: 11%"></div>
+            <div class="vBar" style="left: 21%"></div>
+            <div class="vBar" style="left: 31%"></div>
+            <div class="vBar" style="left: 41%"></div>
+            <div class="vBar" style="left: 51%"></div>
+            <div class="vBar" style="left: 61%"></div>
+            <div class="vBar" style="left: 71%"></div>
+            <div class="vBar" style="left: 81%"></div>
+            <div class="vBar" style="left: 91%"></div>
 		</div>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/mobile.js"></script>

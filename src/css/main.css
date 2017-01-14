@@ -6798,3 +6798,11 @@ TODO: verify if we can touch only section
 .white {
     color: #ffffff !important;
 }
+.vBar {
+    position: fixed;
+    background-color: #ffffff;
+    opacity: 0.1;
+    width: 9%;
+    height: 50%;
+    z-index: -1;
+}
