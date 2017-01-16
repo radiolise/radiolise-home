@@ -13,3 +13,5 @@ You should have received a copy of the GNU Affero General Public License along w
 
 
 **If you'd like to know how to set up radio·li·se home, you may [read this instruction](BUILD.md).**
+
+**If you need a web edition of radio·li·se that you don't need to host yourself and enables you to play streams inside your browser: [radio·li·se web](https://github.com/radiolise/Web) would be the perfect alternative.**
