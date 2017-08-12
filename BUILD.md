@@ -1,6 +1,6 @@
 # Setup using APT and Git
 
-**Actually, this instruction only works on *[Debian](https://en.wikipedia.org/wiki/Debian)*-based *[GNU](https://en.wikipedia.org/wiki/GNU)*/*[Linux](https://en.wikipedia.org/wiki/Linux_kernel)* distributions!** (e.g. *[Debian](https://en.wikipedia.org/wiki/Debian)* itself, *[Raspbian](https://en.wikipedia.org/wiki/Raspbian)*, *[gNewSense](https://en.wikipedia.org/wiki/GNewSense)* and *[Ubuntu](https://en.wikipedia.org/wiki/List_of_Linux_distributions#Ubuntu-based)*-based distributions)
+**Actually, this instruction only works on *[Debian](https://en.wikipedia.org/wiki/Debian)*-based *[GNU](https://en.wikipedia.org/wiki/GNU)*/*[Linux](https://en.wikipedia.org/wiki/Linux_kernel)* distributions!** (e.g. *[Debian](https://en.wikipedia.org/wiki/Debian)* itself, *[Raspbian](https://en.wikipedia.org/wiki/Raspbian)*, *[gNewSense](https://en.wikipedia.org/wiki/GNewSense)* and [*Ubuntu*-based](https://en.wikipedia.org/wiki/List_of_Linux_distributions#Ubuntu-based) distributions)
 
 Start a new terminal session as *root* or make sure that you use `sudo` with every single command.
 
